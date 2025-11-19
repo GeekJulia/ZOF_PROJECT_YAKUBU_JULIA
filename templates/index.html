@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOF Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ZOF — Zero of Functions Solver</h1>
+        <p class="subtitle">Compute roots using numerical methods with a clean interface 🚀</p>
+
+        <form method="POST">
+            <div class="form-group">
+                <label>Method</label>
+                <select name="method" required>
+                    <option value="">Select a method...</option>
+                    <option>Bisection</option>
+                    <option>Regula Falsi</option>
+                    <option>Secant</option>
+                    <option>Newton-Raphson</option>
+                    <option>Fixed Point</option>
+                    <option>Modified Secant</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>f(x)</label>
+                <input type="text" name="function" placeholder="e.g. x**3 - 2*x - 5" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Input 1</label>
+                    <input type="number" step="any" name="v1" placeholder="x0 or a">
+                </div>
+
+                <div class="form-group">
+                    <label>Input 2</label>
+                    <input type="number" step="any" name="v2" placeholder="x1 or b">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tolerance</label>
+                <input type="text" name="tol" placeholder="1e-6">
+            </div>
+
+            <div class="form-group">
+                <label>Max Iterations</label>
+                <input type="number" name="maxiter" placeholder="50">
+            </div>
+
+            <button type="submit" class="btn">Compute Root</button>
+        </form>
+
+        {% if result %}
+        <div class="result-card">
+            <h2>Result</h2>
+            <p><strong>Root:</strong> {{ result.root }}</p>
+            <p><strong>Error:</strong> {{ result.error }}</p>
+            <p><strong>Iterations:</strong> {{ result.iterations }}</p>
+
+            <h3>Iteration History</h3>
+            <div class="history">
+                {% for row in result.history %}
+                    <div class="history-row">{{ row }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
