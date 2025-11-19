@@ -1,4 +1,4 @@
 Name: Yakubu Julia Esele
 Matric number: 22CG031971
-Live URL: https://your-deployed-app-url.example
+Live URL: https://zof-project-yakubu-julia.onrender.com
 GitHub repo: https://github.com/GeekJulia/ZOF_PROJECT_YAKUBU_JULIA
